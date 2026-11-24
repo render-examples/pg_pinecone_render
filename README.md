@@ -19,7 +19,6 @@ Image: [`docker.io/pineconeteam/pg_pinecone:pg18`](https://hub.docker.com/r/pine
 - `POSTGRES_USER=postgres`, database `pg_pinecone`.
 - A URL-safe password, generated on first boot and stored on the disk. Render's `generateValue` is still a base64 256-bit string (the docs show a value ending in `=`), and `+`, `/`, and `=` break a connection URL. The start command does not use `generateValue`.
 
-`maxShutdownDelaySeconds` is omitted. Railway waits 60 seconds so Postgres can checkpoint, and Render's usual default is 30, but `render blueprints validate` rejects the field when a disk is attached: "max shutdown delay is not supported for services with a disk". That matches the [disk docs](https://render.com/docs/disks), so this blueprint leaves the delay at Render's default.
 
 ## Connect
 
